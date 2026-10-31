@@ -4,6 +4,8 @@
 
 **准备部署网站？从 [云端部署分步指南](docs/CLOUD_DEPLOYMENT.zh-CN.md) 开始。** 先发布不需要付款密钥的演示站，再配置隔离的后台测试环境。也可先按 [本地体验教程](docs/GETTING_STARTED.zh-CN.md) 在电脑上查看效果。
 
+**不知道选哪种部署、每月多少钱？** 查看 [部署方式、月费与访问量估算](docs/DEPLOYMENT_COSTS.zh-CN.md)：比较免费演示、独立云端、Lovable 和家用服务器，列出需要另付的费用。小型场馆以每天约 150 次访问、30 笔预订作为预算示例，不代表已通过生产压测。
+
 ## 网站、后台与付款的关系
 
 使用者在自己的云托管后台导入 GitHub 代码，构建网站并绑定自己的网址。Lovable 可以作为开发工具或关联数据库后台，网站不要求通过 Lovable 发布。
@@ -27,6 +29,7 @@
 
 | 你的目的 | 从这里开始 | 完成后会得到什么 |
 |---|---|---|
+| 选择部署方式和估算预算 | [部署选型与费用](docs/DEPLOYMENT_COSTS.zh-CN.md) | 云端与家用服务器成本、访问量假设和另付项目 |
 | 在自己的云端部署网站 | [云端部署分步指南](docs/CLOUD_DEPLOYMENT.zh-CN.md) | 自己管理的演示网站与管理界面 |
 | 在自己电脑上看看效果 | [新手教程：第 1–5 步](docs/GETTING_STARTED.zh-CN.md) | 本地演示页面 |
 | 分享一个网页链接给别人 | [新手教程：发布演示站](docs/GETTING_STARTED.zh-CN.md#6-发布只含示例数据的演示网站) | 只含示例数据的公开网站 |
@@ -120,6 +123,7 @@ npm run build
 
 ## 更多文档
 
+- [部署选型、月费、访问量与家用服务器](docs/DEPLOYMENT_COSTS.zh-CN.md)
 - [云端网站部署指南](docs/CLOUD_DEPLOYMENT.zh-CN.md)
 - [部署流程、架构图与界面截图](docs/DIAGRAMS_AND_SCREENSHOTS.zh-CN.md)
 - [Shopify / Stripe 付款与客户双向同步](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)
