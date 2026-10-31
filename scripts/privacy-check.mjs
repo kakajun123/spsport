@@ -21,7 +21,9 @@ export function findingsFor(path, content) {
   if (emails.some((email) => !email.toLowerCase().endsWith('@example.com'))) add('non-example-email');
   return hits;
 }
-export function identitySafe(name, email) { return name === 'spsport' && email === 'opensource@example.com'; }
+export function identitySafe(name, email) {
+  return ['spsport', 'sp sport kakajun'].includes(name) && email === 'opensource@example.com';
+}
 const git = (args) => execFileSync('git', args, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 
 // GitHub ZIP downloads have no .git directory and beginners need no Git install.

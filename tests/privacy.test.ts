@@ -15,6 +15,8 @@ test('privacy scanner rejects secret, identity and export fixtures without revea
   assert.ok(findingsFor('customer.csv', '').includes('restricted-file'));
   assert.deepEqual(findingsFor('sample.ts', 'member001@example.com'), []);
   assert.equal(identitySafe('spsport', 'opensource@example.com'), true);
+  assert.equal(identitySafe('sp sport kakajun', 'opensource@example.com'), true);
+  assert.equal(identitySafe('sp sport kakajun', ['person', 'mail.invalid'].join('@')), false);
   assert.equal(identitySafe('personal', 'opensource@example.com'), false);
 });
 
