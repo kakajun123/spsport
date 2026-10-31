@@ -1,8 +1,21 @@
 # spsport 场地预订与会员管理系统
 
-一个可下载、可修改的开源场地预订项目。包含中英双语界面、羽毛球场与台球时段选择、会员和团课管理示例，采用 [MIT 开源协议](LICENSE)。
+一个可下载、可修改、由使用者部署到自己云端的开源场地预订项目。客户通过部署者的网站订场，员工登录同一网站的管理后台。包含中英双语界面、羽毛球场与台球时段选择、会员和团课管理示例，采用 [MIT 开源协议](LICENSE)。
 
-**第一次使用？从 [零基础操作教程](docs/GETTING_STARTED.zh-CN.md) 开始。** 不需要编程经验，不需要付款密钥，也不需要先注册数据库。
+**准备部署网站？从 [云端部署分步指南](docs/CLOUD_DEPLOYMENT.zh-CN.md) 开始。** 先发布不需要付款密钥的演示站，再配置隔离的后台测试环境。也可先按 [本地体验教程](docs/GETTING_STARTED.zh-CN.md) 在电脑上查看效果。
+
+## 网站、后台与付款的关系
+
+使用者在自己的云托管后台导入 GitHub 代码，构建网站并绑定自己的网址。Lovable 可以作为开发工具或关联数据库后台，网站不要求通过 Lovable 发布。
+
+外部付款接入只说明两种：
+
+| 接入方案 | 目标用途 |
+|---|---|
+| Shopify | 已有商店作为付款入口；以 Shopify 客户为主档案，与网站关联的后台数据库双向同步必要资料 |
+| Stripe API | 通过 Stripe 创建付款会话并收款，由服务端回调确认预订 |
+
+客户同步和付款是独立集成。当前仅有客户 ID 预留字段，**Shopify 客户双向同步尚未实现，真实付款保持关闭**；不会因部署网站或填写密钥而自动完成。[完整目标、关联规则与当前状态](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)
 
 ## 先知道这三件事
 
@@ -14,11 +27,13 @@
 
 | 你的目的 | 从这里开始 | 完成后会得到什么 |
 |---|---|---|
+| 在自己的云端部署网站 | [云端部署分步指南](docs/CLOUD_DEPLOYMENT.zh-CN.md) | 自己管理的演示网站与管理界面 |
 | 在自己电脑上看看效果 | [新手教程：第 1–5 步](docs/GETTING_STARTED.zh-CN.md) | 本地演示页面 |
-| 不使用命令行，在 Lovable 里体验 | [Lovable 分步教程](docs/LOVABLE_SETUP.md) | 独立的演示项目 |
 | 分享一个网页链接给别人 | [新手教程：发布演示站](docs/GETTING_STARTED.zh-CN.md#6-发布只含示例数据的演示网站) | 只含示例数据的公开网站 |
 | 修改场地数量和价格 | [场地配置说明](docs/VENUE_CONFIG.md) | 自定义 spsport 演示配置 |
-| 用测试数据库保存数据 | [测试数据库配置](LOVABLE_DEPLOY.md) | 独立测试环境，不是生产验收 |
+| 用测试数据库保存数据 | [后台测试配置](docs/BACKEND_SETUP.zh-CN.md) | 独立测试环境，不是生产验收 |
+| 关联 Lovable 后台 | [后台关联边界](docs/LOVABLE_SETUP.md) | 明确外部网站与数据后台的配置关系 |
+| 理解付款和客户关联 | [Shopify / Stripe 与客户同步](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md) | 两种接入目标与待开发清单 |
 | 修改代码或贡献功能 | [贡献指南](CONTRIBUTING.md) | 可复核的修改与测试结果 |
 
 ## 预订方式
@@ -82,8 +97,11 @@ npm run build
 
 ## 更多文档
 
-- [新手从下载到发布](docs/GETTING_STARTED.zh-CN.md)
-- [Lovable 使用步骤](docs/LOVABLE_SETUP.md)
+- [云端网站部署指南](docs/CLOUD_DEPLOYMENT.zh-CN.md)
+- [Shopify / Stripe 付款与客户双向同步](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)
+- [本地体验与手动发布](docs/GETTING_STARTED.zh-CN.md)
+- [后台数据库测试配置](docs/BACKEND_SETUP.zh-CN.md)
+- [Lovable 后台关联边界](docs/LOVABLE_SETUP.md)
 - [API 文档](docs/API.md)
 - [安全问题与未完成项](docs/REVIEW.zh-CN.md)
 - [贡献指南](CONTRIBUTING.md)

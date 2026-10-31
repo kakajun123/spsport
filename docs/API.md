@@ -1,10 +1,15 @@
 # API 文档
 
-本项目的 API 分三层：
+网站前端由使用者部署到自己的云端托管平台，数据库与服务端函数独立配置；Lovable 可以提供开发或关联后台，网站不要求部署到 Lovable。部署步骤见 [云端部署指南](CLOUD_DEPLOYMENT.zh-CN.md)。
+
+外部付款仅有 Shopify 与 Stripe API 两种接入目标。Shopify 客户主档案与后台双向同步尚未实现，不能把 `shopify_customer_id` 字段当作同步接口。详见 [客户关联、同步规则及实现状态](PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)。
+
+本项目现有 API 代码分三层：
 
 ```
 前端 src/lib/api.ts  ──►  Supabase RPC（SQL 函数）  ──►  Postgres
-前端 src/lib/payment.ts ──►  Edge Functions（Shopify / Stripe）
+付款目标：src/lib/payment.ts ──► Edge Functions（Shopify / Stripe）
+当前：前端拒绝付款请求，四个付款函数入口返回 503
 ```
 
 ## 一、前端 API（`src/lib/api.ts`）
@@ -60,7 +65,7 @@
 ```ts
 // src/lib/payment.ts
 createPayment({ kind: "topup" | "booking", amount?, variantId?, lines?, email? })
-// → { checkoutUrl }
+// 目标返回：{ checkoutUrl }；当前实际行为是拒绝请求
 ```
 当前开源预览版的 `createPayment` 会拒绝请求。四个 Edge Function 在处理请求前返回 503，不读取支付凭据或调用平台。`VITE_PAYMENT_PROVIDER` 是保留配置，不能用于启用付款。
 
@@ -92,6 +97,8 @@ createPayment({ kind: "topup" | "booking", amount?, variantId?, lines?, email? }
 | `shopify-webhook` | Shopify `orders/paid` | 回写余额 / 确认订单 |
 | `stripe-checkout` | 前端 | 建 Checkout Session（任意金额） |
 | `stripe-webhook` | Stripe `checkout.session.completed` | 回写余额 / 确认订单 |
+
+这些函数不包含 Shopify 客户导入、客户更新回调或反向写回。它们是安全关闭的旧支付实现，不是已验收的付款协议；Stripe 延迟付款状态处理、交易绑定等缺口见审查报告。
 
 ### 环境变量（Supabase Function secrets）
 

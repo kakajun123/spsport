@@ -52,6 +52,9 @@ Stripe 订单沿用 `channel='shopify'`；两个 checkout 路径的 booking.pric
 
 ## 其他边界
 
+- 交付路径是使用者在自己的云端部署网站，数据库与服务端单独配置；不以 Lovable 网站发布为前提。
+- Shopify 客户主档案与后台双向同步尚未实现。`profiles.shopify_customer_id` 仅为预留字段；仍缺独立客户模型、验证后的登录绑定、外部身份映射、双向事件与任务、重试去重、冲突和删除传播。现有 `profiles` 依赖 `auth.users`，不能直接作为完整 Shopify 客户导入表。
+- 外部付款目标仅 Shopify 与 Stripe API；两个接入的实现和验收边界见 [付款与客户同步说明](PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)。
 - 生产数据表没有 `venue_id` 隔离；JSON 切换只适用于演示，不是完整多租户。
 - 已新增隐私迁移：原始预订限制为本人或员工读取，课程原始排期限制为员工，公开占用 RPC 只返回场地、时间和固定状态。已有安装需实际执行迁移后生效。
 - 后台部分写操作未完整检查错误；演示数据多数是静态样例。不可据此判断实际保存成功。
