@@ -1,0 +1,56 @@
+{
+  "id": "spsport",
+  "name_en": "spsport",
+  "name_zh": "spsport",
+  "pricing": {
+    "peak_multiplier": 1.3,
+    "weekday_peak": {
+      "start": "18:00",
+      "end": "22:00"
+    },
+    "weekend_peak": {
+      "start": "09:00",
+      "end": "22:00"
+    }
+  },
+  "resources": [
+    {
+      "key": "badminton",
+      "category": "badminton",
+      "name_en": "Badminton Court",
+      "name_zh": "羽毛球场",
+      "price_member": 12,
+      "price_non_member": 15,
+      "units": 3
+    },
+    {
+      "key": "ball_machine",
+      "category": "badminton",
+      "name_en": "Ball Machine",
+      "name_zh": "发球机",
+      "price_member": 4,
+      "price_non_member": 5,
+      "units": 1,
+      "is_addon": true,
+      "addon_for": "badminton"
+    },
+    {
+      "key": "snooker",
+      "category": "billiards",
+      "name_en": "Snooker Table",
+      "name_zh": "斯诺克",
+      "price_member": 10,
+      "price_non_member": 12,
+      "units": 1
+    },
+    {
+      "key": "pool8",
+      "category": "billiards",
+      "name_en": "8-Ball Table",
+      "name_zh": "美式八球",
+      "price_member": 8,
+      "price_non_member": 10,
+      "units": 1
+    }
+  ]
+}

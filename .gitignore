@@ -1,0 +1,41 @@
+node_modules
+dist
+.env
+.env.local
+
+# tsc build artifacts（tsc -b 会生成，不要提交）
+vite.config.js
+vite.config.d.ts
+*.tsbuildinfo
+
+# 本地检测产物（含本机路径，不提交）
+.taste-skill/
+
+.env.*
+!.env.example
+.hallmark/
+.DS_Store
+coverage/
+*.log
+
+# Credentials, identity files, raw exports and local reports
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.sqlite
+*.sqlite3
+*.db
+*.csv
+*.xlsx
+*.dump
+*.backup
+*.zip
+*.tar
+*.gz
+.npmrc
+.aws/
+.ssh/
+private/
+local-reports/
