@@ -14,6 +14,7 @@ vite.config.d.ts
 .env.*
 !.env.example
 .hallmark/
+.archify/
 .DS_Store
 coverage/
 *.log

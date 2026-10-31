@@ -1,0 +1,16 @@
+flowchart TD
+  A[客户与员工] -->|访问| W[spsport 网站：部署在自己的云端]
+  W -->|HTTPS 请求| B[云端后台：Lovable Cloud / Supabase 的认证与接口]
+  B -->|受控读写| D[后台数据库：客户、预订、账本、RLS]
+  B -.->|目标付款请求| P[付款接口与回调：当前关闭]
+  P -.->|验签及核对后确认| B
+  P -.->|创建结账| S[Shopify 付款入口]
+  S -.->|付款回调| P
+  P -.->|创建 Checkout Session| T[Stripe API 付款入口]
+  T -.->|付款回调| P
+  D -.->|授权资料变更| Q[客户双向同步服务：待实现]
+  Q -.->|更新客户镜像| D
+  Q -.->|受控写回| C[Shopify 客户主档案]
+  C -.->|客户资料事件| Q
+  classDef planned fill:#fff7ed,stroke:#c2410c,color:#431407;
+  class P,S,T,Q,C planned;

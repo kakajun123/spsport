@@ -1,0 +1,15 @@
+flowchart TD
+  A[取得 spsport 开源代码] --> B[检查隐私与公开提交身份]
+  B -->|通过| C[在自己的云托管后台导入仓库]
+  C --> D[构建 npm run build / 发布 dist]
+  D --> E[验证 HTTPS、手机布局及子页面刷新]
+  E --> F[演示站可用：不扣款、不保存预订]
+  F --> G[配置独立测试后台：数据表、迁移、RLS]
+  G --> H[配置公开参数和登录回跳 / 重新构建]
+  H --> I[验证账号隔离与员工权限]
+  I -.-> J[待完成：Shopify / Stripe 付款与客户双向同步]
+  J -.-> K{业务与安全验收}
+  K -->|未通过| J
+  K -->|全部通过后| L[绑定自己的域名 / 开放正式网站]
+  classDef planned fill:#fff7ed,stroke:#c2410c,color:#431407;
+  class J,K,L planned;

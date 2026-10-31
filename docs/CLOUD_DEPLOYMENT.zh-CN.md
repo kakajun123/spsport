@@ -16,20 +16,13 @@
 
 ## 2. 目标链路
 
-下图是交付目标；付款与客户同步的实现状态见 [接口说明](PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)。
+先看部署流程，再看网站与后台的关系。两张图已标明后续开发与验收门槛；付款与客户同步的实现状态见 [接口说明](PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)。
 
-```mermaid
-flowchart TD
-  G[GitHub 开源代码] --> H[使用者自己的云托管平台]
-  H --> W[spsport 网站与管理后台]
-  W <--> B[关联的云端后台与数据库]
-  B --> P{付款服务端接口}
-  P --> S[Shopify 付款入口]
-  P --> T[Stripe API 付款入口]
-  S -->|付款回调| B
-  T -->|付款回调| B
-  B <--> C[Shopify 客户主档案]
-```
+![spsport 云端部署流程](images/cloud-deployment.png)
+
+![spsport 系统架构，包含当前关闭和待实现的模块](images/system-architecture.png)
+
+[完整图文说明与界面截图](DIAGRAMS_AND_SCREENSHOTS.zh-CN.md) · [可编辑 Mermaid 源文件](diagrams/README.md)
 
 每个部署者使用自己的云项目、数据库和支付账号。当前代码没有完整多租户隔离，不要把多个独立经营者的客户放进同一个共享数据库。
 

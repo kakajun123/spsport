@@ -36,6 +36,16 @@
 | 理解付款和客户关联 | [Shopify / Stripe 与客户同步](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md) | 两种接入目标与待开发清单 |
 | 修改代码或贡献功能 | [贡献指南](CONTRIBUTING.md) | 可复核的修改与测试结果 |
 
+## 部署流程与系统架构
+
+网站部署在使用者自己的云端。图中已标明开发与验收门槛：**真实付款关闭，客户双向同步待实现。**
+
+![spsport 云端部署流程](docs/images/cloud-deployment.png)
+
+![spsport 系统架构，包含关闭和待实现模块](docs/images/system-architecture.png)
+
+[打开完整图文说明与高清图片](docs/DIAGRAMS_AND_SCREENSHOTS.zh-CN.md) · [可编辑图表源文件](docs/diagrams/README.md)
+
 ## 预订方式
 
 在同一页依次选择日期、场地、时段，下面的订单摘要同步显示价格。可以选择多个场地，连续时段会合并。手机底部提供总价和「查看并预订」入口。
@@ -47,6 +57,19 @@
 - 当前时区固定为 `Australia/Melbourne`，包含夏令时。
 
 ![spsport 单页预订演示，使用虚构数据](docs/images/booking-preview.png)
+
+<details>
+<summary>查看手机订场与管理后台演示截图</summary>
+
+手机时段选择与底部总价入口：
+
+<img src="docs/images/booking-mobile-preview.png" alt="spsport 手机订场演示" width="390">
+
+管理后台资源管理页（虚构场地与价格）：
+
+![spsport 资源管理演示](docs/images/admin-preview.png)
+
+</details>
 
 ## 熟悉命令行的人可以快速开始
 
@@ -98,6 +121,7 @@ npm run build
 ## 更多文档
 
 - [云端网站部署指南](docs/CLOUD_DEPLOYMENT.zh-CN.md)
+- [部署流程、架构图与界面截图](docs/DIAGRAMS_AND_SCREENSHOTS.zh-CN.md)
 - [Shopify / Stripe 付款与客户双向同步](docs/PAYMENTS_AND_CUSTOMER_SYNC.zh-CN.md)
 - [本地体验与手动发布](docs/GETTING_STARTED.zh-CN.md)
 - [后台数据库测试配置](docs/BACKEND_SETUP.zh-CN.md)
